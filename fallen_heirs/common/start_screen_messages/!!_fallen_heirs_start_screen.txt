@@ -1,0 +1,10 @@
+# Sanctuary Civic
+part = {
+	location = 1
+	localization = "START_SCREEN_POST_SANCTUARY"
+	
+	trigger = {
+		has_civic = civic_sanctuary
+		NOT = { has_country_flag = custom_start_screen }
+	}
+}

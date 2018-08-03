@@ -1,0 +1,30 @@
+civic_sanctuary = {
+	playable = { host_has_dlc = "Apocalypse" }
+	potential = { 
+		ethics = { NOT = { value = ethic_gestalt_consciousness } } 	
+	}
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_mechanists
+				value = civic_syncretic_evolution
+				value = civic_post_apocalyptic
+                value = civic_life_seeded
+			}
+		}
+	}
+	modification = no
+	#random_weight = {
+	#	base = 1 # Should be fairly rare
+	#	modifier = {
+	#		factor = 0
+	#		NOT = { host_has_dlc = "Apocalypse" }
+	#	}
+	#	modifier = {
+	#		# civic has no effect after galaxy generation, disable for random generation
+	#		factor = 0
+	#		has_global_flag = game_started
+	#	}
+	#}
+	description = "civic_tooltip_sanctuary_effects"
+}

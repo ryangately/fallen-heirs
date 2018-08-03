@@ -1,0 +1,6 @@
+﻿l_english:
+ 
+ civic_sanctuary:0 "Sanctuary"
+ civic_sanctuary_desc:0 "This society has evolved on a ring world, seeded and forgotten by an ancient empire."
+ civic_tooltip_sanctuary_effects:0 "Homeworld is a §Y$pc_ringworld_habitable$§! (Size: £planetsize  §Y25§!)\nHabitability preference is set to §Y$trait_pc_ringworld_habitable_preference$§!, making planets undesireable."
+ START_SCREEN_POST_SANCTUARY:0 "The vast ring world we call home has always been a paradise to our kind, and as our scientific knowledge progressed, we began to see patterns in the biosphere that could not be natural.\n\nDid some unknown entity create this world specifically for us? Are we playing a part in a greater design? Regardless of its origin, our people have thrived in the pleasant climate and gentle environment of our homeworld."

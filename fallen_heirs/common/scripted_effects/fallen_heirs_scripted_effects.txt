@@ -1,0 +1,9 @@
+generate_orbital_deposits = {
+    system_star = {	
+		orbital_deposit_tile = {
+			set_deposit = d_vast_energy_deposit
+		}		
+	}
+
+    
+}
