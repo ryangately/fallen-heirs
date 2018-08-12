@@ -8,3 +8,14 @@ part = {
 		NOT = { has_country_flag = custom_start_screen }
 	}
 }
+
+# Archivist Civic
+part = {
+	location = 1
+	localization = "START_SCREEN_POST_ARCHIVIST"
+	
+	trigger = {
+		has_civic = civic_archivist
+		NOT = { has_country_flag = custom_start_screen }
+	}
+}

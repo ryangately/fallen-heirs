@@ -27,4 +27,22 @@ civic_sanctuary = {
 	#	}
 	#}
 	description = "civic_tooltip_sanctuary_effects"
+
+	modifier = { 
+		country_resource_influence_add = -1
+	}
+}
+
+civic_fallen_heir = {
+	playable = { host_has_dlc = "Apocalypse" }
+	modification = no
+
+	description = "civic_tooltip_fallen_heir_effects"
+}
+
+civic_archivist = {
+	playable = { host_has_dlc = "Apocalypse" }
+	modification = no
+
+	description = "civic_tooltip_archivist_effects"
 }

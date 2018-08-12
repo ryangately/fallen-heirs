@@ -22,5 +22,6 @@ on_game_start_country = {
 		game_start.32
 		game_start.34
 		game_start.67 # ringworld pop mod
+		game_start.68 # archivist
 	}
 }
