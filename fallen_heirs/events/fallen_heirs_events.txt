@@ -1,927 +1,131 @@
-### Change homeworld for sanctuary civic ring world start
-namespace = game_start
+# Fallen Heirs events
+namespace = fallenheir
 
+# Heir to the Empire ascension perk
+# Convert empire ethics and apply negative modifier
 country_event = {
-	id = game_start.51
-	hide_window = yes
+	id = fallenheir.1
+	title = "fallenheir.1.name"
+	desc = "fallenheir.1.desc"
+	picture = GFX_evt_galactic_senate
+	show_sound = event_administrative_work
+	
 	is_triggered_only = yes
 	
-	immediate = { 
-		if = {
+	immediate = {
+		every_country = {
+			limit = { 
+				is_ai = no
+				has_communications = root
+				NOT = { is_same_value = root }
+			}
+			country_event = { id = fallenheir.02 }
+		}
+		#change_dominant_species = { species = last_created change_all = yes }
+	}
+	
+	option = {
+		name = "fallenheir.1.a"
+		trigger = {
+			Or = {
+				has_ethic = ethic_fanatic_spiritualist
+				has_ethic = ethic_spiritualist
+			}
+		}
+		tooltip = {
+			modify_species = {
+				species = this
+				add_trait = trait_latent_psionic
+			}
+		}
+		clear_ethos = yes
+		country_add_ethic = ethic_fanatic_spiritualist
+		every_owned_pop = {
 			limit = {
-				has_civic = "civic_sanctuary"
+				is_same_species = root
+				NOT = { species = { has_trait = trait_latent_psionic } }
 			}
-
-			# create ring world on cleared neighbor
-			solar_system = {
-
-				save_event_target_as = fh_initial_system
-
-				every_neighbor_system = { 
-					ignore_hyperlanes = yes
-					limit = { has_star_flag = "neighbor_t1_star" }
-
-					save_event_target_as = fh_ringworld_system
-
-					#Ringworld Section A
-					spawn_planet = {
-						class = "pc_ringworld_tech"
-						orbit_angle = 60
-						orbit_distance = 45
-						orbit_angle_offset = 30
-						init_effect = {
-							set_name = "NAME_Ring_Section"
-							surveyed = {
-								set_surveyed = yes
-								surveyor = FROM
-							}
-							set_all_comms_surveyed = yes
-							set_planet_flag = megastructure
-							prevent_anomaly = yes
-						}
-					}
-					spawn_planet = {
-						class = "pc_ringworld_seam"
-						orbit_angle = 60
-						orbit_distance = 45
-						orbit_angle_offset = -30
-						init_effect = {
-							set_name = "NAME_Ring_Section"
-							surveyed = {
-								set_surveyed = yes
-								surveyor = FROM
-							}
-							set_all_comms_surveyed = yes
-							set_planet_flag = megastructure
-							prevent_anomaly = yes
-						}
-					}
-					spawn_planet = {
-						class = "pc_ringworld_habitable"
-						orbit_angle = 60
-						orbit_distance = 45
-						home_planet = yes
-						init_effect = {
-							set_name = "NAME_Habitable_Section_A"
-							surveyed = {
-								set_surveyed = yes
-								surveyor = FROM
-							}
-							set_all_comms_surveyed = yes
-							while = {
-								limit = {
-									any_tile = { has_blocker = yes }
-								}
-								random_tile = {
-									limit = { has_blocker = yes }
-									remove_blocker = yes
-								}
-							}
-							trigger_megastructure_icon = yes
-							prevent_anomaly = yes
-							set_planet_flag = megastructure 
-							set_owner = root
-							set_controller = root
-							set_capital = yes
-							generate_start_buildings_and_blockers = yes
-
-							#generate extra blockers
-							random_tile = {
-								limit = { has_blocker = no has_building = no has_pop = no }
-								set_blocker = "tb_failing_infrastructure"
-							}
-							random_tile = {
-								limit = { has_blocker = no has_building = no has_pop = no }
-								set_blocker = "tb_decrepit_dwellings"
-							}
-
-
-							save_event_target_as = fh_ringworld_capital
-
-							root.owner_species = {
-								set_species_homeworld = prev
-							}
-						}
-					}
-					#Section B
-					spawn_planet = {
-						class = "pc_ringworld_tech"
-						orbit_angle = 150
-						orbit_distance = 45
-						orbit_angle_offset = 30
-						init_effect = {
-							set_name = "NAME_Ring_Section"
-							surveyed = {
-								set_surveyed = yes
-								surveyor = FROM
-							}
-							set_all_comms_surveyed = yes
-							set_planet_flag = megastructure
-							prevent_anomaly = yes
-						}
-					}
-					spawn_planet = {
-						class = "pc_ringworld_seam"
-						orbit_angle = 150
-						orbit_distance = 45
-						orbit_angle_offset = -30
-						init_effect = {
-							set_name = "NAME_Ring_Section"
-							surveyed = {
-								set_surveyed = yes
-								surveyor = FROM
-							}
-							set_all_comms_surveyed = yes
-							set_planet_flag = megastructure
-							prevent_anomaly = yes
-						}
-					}
-					spawn_planet = {
-						class = "pc_ringworld_habitable"
-						orbit_angle = 150
-						orbit_distance = 45
-						home_planet = yes
-						init_effect = {
-							set_name = "NAME_Habitable_Section_B"
-							surveyed = {
-								set_surveyed = yes
-								surveyor = FROM
-							}
-							set_all_comms_surveyed = yes
-							while = {
-								limit = {
-									any_tile = { has_blocker = yes }
-								}
-								random_tile = {
-									limit = { has_blocker = yes }
-									remove_blocker = yes
-								}
-							}
-							trigger_megastructure_icon = yes
-							set_planet_flag = megastructure
-							prevent_anomaly = yes
-						}
-					}
-					#Section C
-					spawn_planet = {
-						class = "pc_ringworld_tech"
-						orbit_angle = 240
-						orbit_distance = 45
-						orbit_angle_offset = 30
-						init_effect = {
-							set_name = "NAME_Ring_Section"
-							surveyed = {
-								set_surveyed = yes
-								surveyor = FROM
-							}
-							set_all_comms_surveyed = yes
-							set_planet_flag = megastructure
-							prevent_anomaly = yes
-						}
-					}
-					spawn_planet = {
-						class = "pc_ringworld_seam"
-						orbit_angle = 240
-						orbit_distance = 45
-						orbit_angle_offset = -30
-						init_effect = {
-							set_name = "NAME_Ring_Section"
-							surveyed = {
-								set_surveyed = yes
-								surveyor = FROM
-							}
-							set_all_comms_surveyed = yes
-							set_planet_flag = megastructure
-							prevent_anomaly = yes
-						}
-					}
-					spawn_planet = {
-						class = "pc_ringworld_habitable"
-						orbit_angle = 240
-						orbit_distance = 45
-						home_planet = yes
-						init_effect = {
-							set_name = "NAME_Habitable_Section_C"
-							surveyed = {
-								set_surveyed = yes
-								surveyor = FROM
-							}
-							set_all_comms_surveyed = yes
-							while = {
-								limit = {
-									any_tile = { has_blocker = yes }
-								}
-								random_tile = {
-									limit = { has_blocker = yes }
-									remove_blocker = yes
-								}
-							}
-							trigger_megastructure_icon = yes
-							set_planet_flag = megastructure
-							prevent_anomaly = yes
-						}
-					}
-					#Section D
-					spawn_planet = {
-						class = "pc_ringworld_tech"
-						orbit_angle = 330
-						orbit_distance = 45
-						orbit_angle_offset = 30
-						init_effect = {
-							set_name = "NAME_Ring_Section"
-							surveyed = {
-								set_surveyed = yes
-								surveyor = FROM
-							}
-							set_all_comms_surveyed = yes
-							set_planet_flag = megastructure
-							prevent_anomaly = yes
-						}
-					}
-					spawn_planet = {
-						class = "pc_ringworld_seam"
-						orbit_angle = 330
-						orbit_distance = 45
-						orbit_angle_offset = -30
-						init_effect = {
-							set_name = "NAME_Ring_Section"
-							surveyed = {
-								set_surveyed = yes
-								surveyor = FROM
-							}
-							set_all_comms_surveyed = yes
-							set_planet_flag = megastructure
-							prevent_anomaly = yes
-						}
-					}
-					spawn_planet = {
-						class = "pc_ringworld_habitable"
-						orbit_angle = 330
-						orbit_distance = 45
-						home_planet = yes
-						init_effect = {
-							set_name = "NAME_Habitable_Section_D"
-							surveyed = {
-								set_surveyed = yes
-								surveyor = FROM
-							}
-							set_all_comms_surveyed = yes
-							while = {
-								limit = {
-									any_tile = { has_blocker = yes }
-								}
-								random_tile = {
-									limit = { has_blocker = yes }
-									remove_blocker = yes
-								}
-							}
-							trigger_megastructure_icon = yes
-							set_planet_flag = megastructure
-							prevent_anomaly = yes
-						}
-					}
-				}
-
-				# Store the existing ring world system, star, and capital names
-
-				create_fleet = {
-					name = "[This.GetName]"
-					settings = {
-						spawn_debris = no
-					}				
-					effect = {
-						set_owner = root
-						create_ship_design = {
-							design = "NAME_R44"
-						}
-						create_ship = {
-							name = "NAME_Specter"
-							design = last_created_design
-							graphical_culture = "pirate_01"
-							upgradable = no
-						}
-						set_location = root.home_planet
-						save_event_target_as = fh_cap_system_fleet
-					}
-				}
-				create_fleet = {
-					name = "[Root.Capital.GetName]"
-					settings = {
-						spawn_debris = no
-					}				
-					effect = {
-						set_owner = root
-						create_ship_design = {
-							design = "NAME_R44"
-						}
-						create_ship = {
-							name = "NAME_Wraith"
-							design = last_created_design
-							graphical_culture = "pirate_01"
-							upgradable = no
-						}
-						set_location = root.home_planet
-						save_event_target_as = fh_cap_fleet
-					}
-				}
-			}
-
-			# rename the old home system and planets
-			event_target:fh_ringworld_system = {
-				event_target:fh_initial_system = {
-					set_name = "[Prev.GetName]"
-				}
-			}
-
-			# rename the ringworld system using homesystem names
-			# rename star
-			event_target:fh_cap_system_fleet = { 
-				event_target:fh_ringworld_system = {
-					every_system_planet = { 
-						limit = { is_planet_class = star } 
-						set_name = "[PrevPrev.GetFleetName]"
-						set_planet_flag = empire_home_system
-					}
-				}
-			}
-
-			# rename system
-			event_target:fh_cap_system_fleet = {
-				event_target:fh_ringworld_system = {
-					set_name = "[Prev.GetFleetName]"
-				}
-			}
-
-			# rename rw planet
-			event_target:fh_cap_fleet = {
-				event_target:fh_ringworld_capital = {
-					set_name = "[Prev.GetFleetName]"
-				}
-			}
-
-			# delete the renaming fleets
-			event_target:fh_cap_system_fleet = {
-				delete_fleet = this
-			}
-
-			event_target:fh_cap_fleet = {
-				delete_fleet = this
-			}
-			# delete all of the original fleets
-			every_owned_ship = {
-				if = {
-					limit = { is_ship_class = shipclass_science_ship }
-					kill_leader = {
-						show_notification = no
-					}
-				}
-				fleet = {
-					delete_fleet = this
-				}
-			}
-
-			# create new pops on ringworld
-			event_target:fh_ringworld_capital = {
-				every_tile = {
-					limit = { has_building = yes }
-					create_pop = {
-						species = root.owner
-					}
-				}
-			}
-
-			# create new starting bases and ships
-			event_target:fh_ringworld_system = {
-				create_starbase = {
-					size = starbase_starport
-					module = shipyard
-					building = crew_quarters
-					owner = root
-				}
-
-				#science
-				create_fleet = {
-					effect = {
-						set_owner = root
-
-						create_ship = {
-							name = random
-							random_existing_design = science
-						}
-
-						set_fleet_stance = evasive				
-						set_location = root.capital_star
-						
-						owner = {
-							create_leader = {
-								type = scientist
-								sub_type = survey
-								name = random
-								species = owner_main_species
-							}
-						}
-						set_leader = last_created_leader
-					}			
-				}
-					
-				#constructor
-				create_fleet = {
-					effect = {
-						set_owner = root
-						
-						create_ship = {
-							name = random
-							random_existing_design = constructor
-						}
-						
-						set_fleet_stance = evasive
-						set_location = root.capital_star
-					}
-				}
-
-				#military
-				create_fleet = {
-					set_take_point = yes
-					effect = {
-						set_owner = root
-						
-						while = {
-							count = 3
-							create_ship = {
-								name = random
-								random_existing_design = corvette
-							}
-						}
-						
-						set_location = root.capital_star
-					}
-				}
-			}
-
-			event_target:fh_initial_system = {
-				every_system_planet = {
-					orbital_deposit_tile = { clear_deposits = yes }
-				}
-			}
-		}
-	}
-}
-
-country_event = {
-	id = game_start.50
-	hide_window = yes
-	is_triggered_only = yes
-
-	trigger = { has_civic = civic_sanctuary }
-
-	immediate = {
-
-		every_owned_pop = {
 			modify_species = {
 				species = this
-				ideal_planet_class = pc_ringworld_habitable
-				base = none # makes this replace parent species
+				add_trait = trait_latent_psionic
 			}
-		}
-		change_dominant_species = { species = last_created change_all = yes }
-
-		# remove old pops
-		every_owned_planet = {
-			limit = { is_capital = no }
-			every_tile = { 
-				kill_pop = yes 
-				remove_building = yes
-			}			
-		}
-
-		every_system_within_border = {
-			limit = { has_star_flag = empire_home_system }
-			remove_star_flag = empire_home_system
-			every_system_planet = {
-				surveyed = {
-					set_surveyed = no
-					surveyor = FROM
-				}
-				if = {
-					limit = { has_planet_flag = starting_deposit }
-					remove_planet_flag = starting_deposit
-				}
-				if = {
-					limit = { has_planet_flag = starting_mining_target }
-					remove_planet_flag = starting_mining_target
-				}
-				if = {
-					limit = { has_planet_flag = starting_research_target }
-					remove_planet_flag = starting_research_target
-				}
-				if = {
-					limit = { is_controlled_by = root }
-					change_pc = pc_barren
-				}
-				prevent_anomaly = no
-				clear_planet_modifiers = yes
-				reroll_deposits = yes
-			}
-		}
-
-		solar_system = {
-			remove_star_flag = neighbor_t1_star
-			set_star_flag = empire_home_system
+			pop_change_ethic = ethic_spiritualist
 		}
 	}
-}
-
-country_event = {
-	id = game_start.66
-	hide_window = yes
-	is_triggered_only = yes
-
-	trigger = { has_civic = civic_sanctuary }
-
-	immediate = {
-
-		solar_system = {
-
-			# remove original planets
-			every_system_planet = {
-				limit = { is_capital = yes }
-				save_event_target_as = fh_old_capital
+	option = {
+		name = "fallenheir.1.b"
+		trigger = {
+			Or = {
+				has_ethic = ethic_fanatic_materialist
+				has_ethic = ethic_materialist
 			}
-
-			every_system_planet = {
-				limit = { 
-					Nor = {
-						is_planet_class = star
-						#is_binary_star = yes
-						#is_trinary_star = yes
-					}
-				}
-
-				orbital_deposit_tile = { clear_deposits = yes }
-
-				if = {
-					limit = { has_planet_flag = starting_deposit }
-					remove_planet_flag = starting_deposit
-				}
-				if = {
-					limit = { has_planet_flag = starting_mining_target }
-					remove_planet_flag = starting_mining_target
-				}
-				if = {
-					limit = { has_planet_flag = starting_research_target }
-					remove_planet_flag = starting_research_target
-				}
-
-				while = {
-					limit = { has_moon = yes }
-					random_moon = {
-						remove_planet = yes
-					}
-				}
-				remove_planet = yes
-			}
-
-			# spawn ringworld
-			#Ringworld Section A
-			spawn_planet = {
-				class = "pc_ringworld_tech"
-				orbit_angle = 60
-				orbit_distance = 45
-				orbit_angle_offset = 30
-				init_effect = {
-					set_name = "NAME_Ring_Section"
-					surveyed = {
-						set_surveyed = yes
-						surveyor = FROM
-					}
-					set_all_comms_surveyed = yes
-					set_planet_flag = megastructure
-					prevent_anomaly = yes
-				}
-			}
-			spawn_planet = {
-				class = "pc_ringworld_seam"
-				orbit_angle = 60
-				orbit_distance = 45
-				orbit_angle_offset = -30
-				init_effect = {
-					set_name = "NAME_Ring_Section"
-					surveyed = {
-						set_surveyed = yes
-						surveyor = FROM
-					}
-					set_all_comms_surveyed = yes
-					set_planet_flag = megastructure
-					prevent_anomaly = yes
-				}
-			}
-			spawn_planet = {
-				class = "pc_ringworld_habitable"
-				orbit_angle = 60
-				orbit_distance = 45
-				home_planet = yes
-				init_effect = {
-					set_name = "NAME_Habitable_Section_A"
-					surveyed = {
-						set_surveyed = yes
-						surveyor = FROM
-					}
-					set_all_comms_surveyed = yes
-					while = {
-						limit = {
-							any_tile = { has_blocker = yes }
-						}
-						random_tile = {
-							limit = { has_blocker = yes }
-							remove_blocker = yes
-						}
-					}
-					trigger_megastructure_icon = yes
-					prevent_anomaly = yes
-					set_planet_flag = megastructure 
-					set_owner = root
-					set_controller = root
-					set_capital = yes
-					generate_start_buildings_and_blockers = yes
-
-					#generate extra blockers
-					random_tile = {
-						limit = { has_blocker = no has_building = no has_pop = no }
-						set_blocker = "tb_failing_infrastructure"
-					}
-					random_tile = {
-						limit = { has_blocker = no has_building = no has_pop = no }
-						set_blocker = "tb_decrepit_dwellings"
-					}
-
-					save_event_target_as = fh_ringworld_capital
-
-					root.owner_species = {
-						set_species_homeworld = prev
-					}
-				}
-			}
-			#Section B
-			spawn_planet = {
-				class = "pc_ringworld_tech"
-				orbit_angle = 150
-				orbit_distance = 45
-				orbit_angle_offset = 30
-				init_effect = {
-					set_name = "NAME_Ring_Section"
-					surveyed = {
-						set_surveyed = yes
-						surveyor = FROM
-					}
-					set_all_comms_surveyed = yes
-					set_planet_flag = megastructure
-					prevent_anomaly = yes
-				}
-			}
-			spawn_planet = {
-				class = "pc_ringworld_seam"
-				orbit_angle = 150
-				orbit_distance = 45
-				orbit_angle_offset = -30
-				init_effect = {
-					set_name = "NAME_Ring_Section"
-					surveyed = {
-						set_surveyed = yes
-						surveyor = FROM
-					}
-					set_all_comms_surveyed = yes
-					set_planet_flag = megastructure
-					prevent_anomaly = yes
-				}
-			}
-			spawn_planet = {
-				class = "pc_ringworld_habitable"
-				orbit_angle = 150
-				orbit_distance = 45
-				home_planet = yes
-				init_effect = {
-					set_name = "NAME_Habitable_Section_B"
-					surveyed = {
-						set_surveyed = yes
-						surveyor = FROM
-					}
-					set_all_comms_surveyed = yes
-
-					trigger_megastructure_icon = yes
-					set_planet_flag = megastructure
-					prevent_anomaly = yes
-					reroll_deposits = yes
-				}
-			}
-			#Section C
-			spawn_planet = {
-				class = "pc_ringworld_tech"
-				orbit_angle = 240
-				orbit_distance = 45
-				orbit_angle_offset = 30
-				init_effect = {
-					set_name = "NAME_Ring_Section"
-					surveyed = {
-						set_surveyed = yes
-						surveyor = FROM
-					}
-					set_all_comms_surveyed = yes
-					set_planet_flag = megastructure
-					prevent_anomaly = yes
-				}
-			}
-			spawn_planet = {
-				class = "pc_ringworld_seam"
-				orbit_angle = 240
-				orbit_distance = 45
-				orbit_angle_offset = -30
-				init_effect = {
-					set_name = "NAME_Ring_Section"
-					surveyed = {
-						set_surveyed = yes
-						surveyor = FROM
-					}
-					set_all_comms_surveyed = yes
-					set_planet_flag = megastructure
-					prevent_anomaly = yes
-				}
-			}
-			spawn_planet = {
-				class = "pc_ringworld_habitable"
-				orbit_angle = 240
-				orbit_distance = 45
-				home_planet = yes
-				init_effect = {
-					set_name = "NAME_Habitable_Section_C"
-					surveyed = {
-						set_surveyed = yes
-						surveyor = FROM
-					}
-					set_all_comms_surveyed = yes
-					while = {
-						limit = {
-							any_tile = { has_blocker = yes }
-						}
-						random_tile = {
-							limit = { has_blocker = yes }
-							remove_blocker = yes
-						}
-					}
-					trigger_megastructure_icon = yes
-					set_planet_flag = megastructure
-					prevent_anomaly = yes
-				}
-			}
-			#Section D
-			spawn_planet = {
-				class = "pc_ringworld_tech"
-				orbit_angle = 330
-				orbit_distance = 45
-				orbit_angle_offset = 30
-				init_effect = {
-					set_name = "NAME_Ring_Section"
-					surveyed = {
-						set_surveyed = yes
-						surveyor = FROM
-					}
-					set_all_comms_surveyed = yes
-					set_planet_flag = megastructure
-					prevent_anomaly = yes
-				}
-			}
-			spawn_planet = {
-				class = "pc_ringworld_seam"
-				orbit_angle = 330
-				orbit_distance = 45
-				orbit_angle_offset = -30
-				init_effect = {
-					set_name = "NAME_Ring_Section"
-					surveyed = {
-						set_surveyed = yes
-						surveyor = FROM
-					}
-					set_all_comms_surveyed = yes
-					set_planet_flag = megastructure
-					prevent_anomaly = yes
-				}
-			}
-			spawn_planet = {
-				class = "pc_ringworld_habitable"
-				orbit_angle = 330
-				orbit_distance = 45
-				home_planet = yes
-				init_effect = {
-					set_name = "NAME_Habitable_Section_D"
-					surveyed = {
-						set_surveyed = yes
-						surveyor = FROM
-					}
-					set_all_comms_surveyed = yes
-					while = {
-						limit = {
-							any_tile = { has_blocker = yes }
-						}
-						random_tile = {
-							limit = { has_blocker = yes }
-							remove_blocker = yes
-						}
-					}
-					trigger_megastructure_icon = yes
-					set_planet_flag = megastructure
-					prevent_anomaly = yes
-				}
-			}
-
-			# create new pops on ringworld
-			event_target:fh_ringworld_capital = {
-				every_tile = {
-					limit = { has_building = yes }
-					create_pop = {
-						species = root.owner
-					}
-				}
-			}
-
-			event_target:fh_old_capital = {
-				change_pc = random_non_colonizable
-				#remove_planet = yes
-			}
-
-			event_target:fh_initial_system = {
-				every_owned_planet = {
-					limit = {
-						Nor = {
-							is_planet_class = star
-							habitable_planet = yes
-						}
-					}
-					change_pc = random_non_colonizable
-				}
-			}
-
-			#asteroids_distance = 115
 		}
-	}
-}
-
-country_event = {
-	id = game_start.67
-	hide_window = yes
-	is_triggered_only = yes
-
-	trigger = { has_civic = civic_sanctuary }
-
-	immediate = {
-
-		every_owned_pop = {
+		tooltip = {
 			modify_species = {
 				species = this
-				ideal_planet_class = pc_ringworld_habitable
-				base = none # makes this replace parent species
+				add_trait = trait_cybernetic
 			}
 		}
-		change_dominant_species = { species = last_created change_all = yes }
-
-		# remove old pops
-		every_owned_planet = {
-			limit = { is_capital = no }
-			every_tile = { 
-				kill_pop = yes 
-				remove_building = yes
-			}			
+		clear_ethos = yes
+		country_add_ethic = ethic_fanatic_materialist
+		every_owned_pop = {
+			limit = {
+				is_same_species = root
+				NOT = { species = { has_trait = trait_cybernetic } }
+			}
+			modify_species = {
+				species = this
+				add_trait = trait_cybernetic
+			}
+			pop_change_ethic = ethic_materialist
 		}
 	}
 }
 
+# Notification for other empires
 country_event = {
-	id = game_start.68
-	hide_window = yes
+	id = fallenheir.2
+	title = "fallenheir.2.name"
+	desc = {
+		text = fallenheir.2.1.desc
+		trigger = {
+			NOR = {
+				any_owned_pop = { is_same_species = from }
+				any_owned_leader = { is_same_species = from }
+			}
+		}
+	}
+	desc = {
+		text = fallenheir.2.2.desc
+		trigger = {
+			OR = {
+				any_owned_pop = { is_same_species = from }
+				any_owned_leader = { is_same_species = from }
+			}
+		}
+	}
+	picture = GFX_evt_galactic_senate
+	show_sound = event_administrative_work
+	location = from.capital_scope
+	
 	is_triggered_only = yes
-
-	trigger = { has_civic = civic_archivist }
-
-	immediate = {
-
-		capital_scope = {
-			random_tile = {
-				limit = { has_building = "building_basic_science_lab_1" }
-
-				set_building = "building_ancient_archives"
-			}
-			random_tile = {
-				limit = {
-					And = {
-						Or = {
-							has_resource = { type = physics_research amount > 0 }
-							has_resource = { type = society_research amount > 0 }
-							has_resource = { type = engineering_research amount > 0 }
-						}
-						has_building = no
-					}
-				}
-				remove_blocker = yes
-				set_building = "building_ancient_archives"
-			}
+	
+	option = {
+		name = "fallenheir.2.a"
+		trigger = {
+			NOT = { has_civic = civic_fallen_heir }
+		}
+	}
+	option = {
+		name = "fallenheir.2.b"
+		trigger = {
+			has_civic = civic_fallen_heir
+		}
+	}
+	option = {
+		name = "fallenheir.2.c"
+		trigger = {
+			has_ascension_perk = ap_heir_to_the_empire
 		}
 	}
 }

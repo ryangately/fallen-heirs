@@ -25,16 +25,16 @@ ap_heir_to_the_empire = {
 	on_enabled = {
 		custom_tooltip = "ap_heir_to_the_empire_tooltip"
 		hidden_effect = {
-			#country_event = { id = utopia.2600 }
+			country_event = { id = fallenheir.1 }	
 		}
 	}
 
 	modifier = {
-		country_resource_unity_mult = -0.10
-		country_resource_energy_mult = -0.10
-		country_resource_minerals_mult = -0.10
-		country_resource_food_mult = -0.10
-		all_technology_research_speed = -0.1
+		#country_resource_unity_mult = -0.10
+		#country_resource_energy_mult = -0.10
+		#country_resource_minerals_mult = -0.10
+		#country_resource_food_mult = -0.10
+		#all_technology_research_speed = -0.1
 	}
 	
 	potential = {
@@ -72,6 +72,24 @@ ap_heir_ascendant = {
 		hidden_effect = {
 			#country_event = { id = utopia.2650 }
 		}
+		if = {
+			limit = { 
+				NOT = { has_technology = tech_dark_matter_power_core }
+			}
+			add_research_option = tech_dark_matter_power_core
+		}
+		if = {
+			limit = { 
+				NOT = { has_technology = tech_dark_matter_deflector }
+			}
+			add_research_option = tech_dark_matter_deflector
+		}
+		if = {
+			limit = { 
+				NOT = { has_technology = tech_dark_matter_propulsion }
+			}
+			add_research_option = tech_dark_matter_propulsion
+		}
 	}
 	possible = {
 		custom_tooltip = {
@@ -82,6 +100,10 @@ ap_heir_ascendant = {
 			fail_text = "requires_ap_heir_to_the_empire"
 			has_ascension_perk = ap_heir_to_the_empire
 		}
+		custom_tooltip = {
+			fail_text = "requires_technology_mine_dark_matter"
+			has_technology = tech_mine_dark_matter
+		}	
 	}
 	
 	potential = {
