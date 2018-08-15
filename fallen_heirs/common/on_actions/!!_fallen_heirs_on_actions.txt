@@ -25,3 +25,23 @@ on_game_start_country = {
 		game_start.68 # archivist
 	}
 }
+
+# Overwritten from vanilla/utopia
+# a new leader is generated for an empire, to be available for recruitment
+# scope: country, from: leader
+on_leader_spawned = {
+	events = {
+		utopia.2509 # New Leaders Get Erudite Trait
+		utopia.2510	# New Leaders Get Cyborg Trait
+		utopia.2560	# New Leaders Get Synthetic Trait
+		utopia.2651	# New Leaders Get Psionic Trait
+		utopia.6000 # hive mind ruler gets hive mind trait to make them immortal
+		syndaw.1050 # Machine Intelligence ruler gets trait
+		distar.173 # New Leaders Get Brainslug Trait
+		fallenheir.5 # New Leaders Get Enigmatic Trait
+	}
+	random_events = {
+		80 = 0
+		20 = utopia.2601
+	}
+}

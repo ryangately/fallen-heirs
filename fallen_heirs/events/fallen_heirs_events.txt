@@ -87,6 +87,10 @@ country_event = {
 				has_ethic = ethic_fanatic_militarist
 			}
 		}
+		hidden_effect = {
+			country_event = { id = fallenheir.6 }
+		}
+		set_country_flag = fallenheir_enigmatic
 		if = {
 			limit = {
 				has_ethic = ethic_fanatic_xenophile
@@ -417,6 +421,63 @@ country_event = {
 				limit = { leader_class = ruler }
 				add_trait = leader_trait_ruler_cyborg
 				add_ruler_trait = leader_trait_ruler_cyborg
+			}
+		}
+	}
+}
+
+# New Leaders Get Enigmatic Trait
+country_event = {
+	id = fallenheir.5
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		owner = {
+			has_country_flag = fallenheir_enigmatice
+		}
+	}
+
+	immediate = {
+		from = {
+			add_trait = leader_trait_enigmatic
+		}
+	}
+}
+
+# Add enigmatic trait
+country_event = {
+	id = fallenheir.6
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		every_owned_leader = {
+			add_trait = leader_trait_enigmatic
+		}
+		while = {
+			limit = {
+				any_pool_leader = {
+					species = {
+						NOR = {
+							has_trait = leader_trait_enigmatic
+		  					has_trait = trait_mechanical
+							has_trait = trait_machine_unit
+						}
+					}
+				}
+			}
+			random_pool_leader = {
+				limit = {
+					species = {
+						NOR = {
+							has_trait = leader_trait_enigmatic
+		  					has_trait = trait_mechanical
+							has_trait = trait_machine_unit
+						}
+					}
+				}
+				add_trait = leader_trait_enigmatic
 			}
 		}
 	}

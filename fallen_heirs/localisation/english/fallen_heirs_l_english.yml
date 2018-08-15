@@ -30,3 +30,6 @@
  fallenheir.1.a:0 "Follow the spiritualist path."
  fallenheir.1.b:0 "Follow the materialist path."
  fallenheir.1.c:0 "Follow the other path. FIX ME."
+
+ leader_trait_enigmatic:0 "Enigmatic"
+ leader_trait_enigmatic_desc:0 "This leader has adopted the habits and beliefs of a bygone age."
