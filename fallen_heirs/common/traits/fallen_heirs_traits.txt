@@ -1,0 +1,12 @@
+leader_trait_senator = {
+	cost = 0
+	modification = no
+	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_ship.dds"
+	self_modifier = {
+        leader_skill_levels = 1
+		species_leader_exp_gain = 0.25
+	}
+    leader_trait = yes
+    initial = no
+    randomized = no
+}
