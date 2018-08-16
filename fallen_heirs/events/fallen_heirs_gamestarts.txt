@@ -914,14 +914,12 @@ country_event = {
 			}
 			random_tile = {
 				limit = {
-					And = {
-						Or = {
-							has_resource = { type = physics_research amount > 0 }
-							has_resource = { type = society_research amount > 0 }
-							has_resource = { type = engineering_research amount > 0 }
-						}
-						has_building = no
+					Or = {
+						has_resource = { type = physics_research amount > 0 }
+						has_resource = { type = society_research amount > 0 }
+						has_resource = { type = engineering_research amount > 0 }
 					}
+					has_building = no
 				}
 				remove_blocker = yes
 				set_building = "building_ancient_archives"

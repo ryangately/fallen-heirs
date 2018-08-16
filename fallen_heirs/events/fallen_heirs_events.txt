@@ -8,7 +8,6 @@ country_event = {
 	title = "fallenheir.1.name"
 	desc = "fallenheir.1.desc"
 	picture = GFX_evt_galactic_senate
-	show_sound = event_administrative_work
 	
 	is_triggered_only = yes
 	
@@ -440,7 +439,36 @@ country_event = {
 
 	immediate = {
 		from = {
-			add_trait = leader_trait_enigmatic
+			if = {
+				limit = { leader_class = admiral }
+				add_trait = leader_trait_admiral_enigmatic
+				add_ruler_trait = leader_trait_ruler_enigmatic
+				break = yes
+			}
+			if = {
+				limit = { leader_class = general }
+				add_trait = leader_trait_general_enigmatic
+				add_ruler_trait = leader_trait_ruler_enigmatic
+				break = yes
+			}
+			if = {
+				limit = { leader_class = governor }
+				add_trait = leader_trait_governor_enigmatic
+				add_ruler_trait = leader_trait_ruler_enigmatic
+				break = yes
+			}
+			if = {
+				limit = { leader_class = scientist }
+				add_trait = leader_trait_scientist_enigmatic
+				add_ruler_trait = leader_trait_ruler_enigmatic
+				break = yes
+			}
+			if = {
+				limit = { leader_class = ruler }
+				add_trait = leader_trait_ruler_enigmatic
+				add_ruler_trait = leader_trait_ruler_enigmatic
+				break = yes
+			}
 		}
 	}
 }
@@ -453,31 +481,77 @@ country_event = {
 
 	immediate = {
 		every_owned_leader = {
-			add_trait = leader_trait_enigmatic
-		}
-		while = {
 			limit = {
-				any_pool_leader = {
-					species = {
-						NOR = {
-							has_trait = leader_trait_enigmatic
-		  					has_trait = trait_mechanical
-							has_trait = trait_machine_unit
-						}
-					}
+				is_same_species = root
+				NOR = {
+					has_trait =	leader_trait_admiral_enigmatic
+					has_trait =	leader_trait_general_enigmatic
+					has_trait =	leader_trait_governor_enigmatic
+					has_trait =	leader_trait_scientist_enigmatic
+					has_trait =	leader_trait_ruler_enigmatic
 				}
 			}
-			random_pool_leader = {
-				limit = {
-					species = {
-						NOR = {
-							has_trait = leader_trait_enigmatic
-		  					has_trait = trait_mechanical
-							has_trait = trait_machine_unit
-						}
-					}
+			if = {
+				limit = { leader_class = admiral }
+				add_trait = leader_trait_admiral_enigmatic
+				add_ruler_trait = leader_trait_ruler_enigmatic
+			}
+			if = {
+				limit = { leader_class = general }
+				add_trait = leader_trait_general_enigmatic
+				add_ruler_trait = leader_trait_ruler_enigmatic
+			}
+			if = {
+				limit = { leader_class = governor }
+				add_trait = leader_trait_governor_enigmatic
+				add_ruler_trait = leader_trait_ruler_enigmatic
+			}
+			if = {
+				limit = { leader_class = scientist }
+				add_trait = leader_trait_scientist_enigmatic
+				add_ruler_trait = leader_trait_ruler_enigmatic
+			}
+			if = {
+				limit = { leader_class = ruler }
+				add_trait = leader_trait_ruler_enigmatic
+				add_ruler_trait = leader_trait_ruler_enigmatic
+			}
+		}
+		every_pool_leader = {
+			limit = {
+				is_same_species = root
+				NOR = {
+					has_trait =	leader_trait_admiral_enigmatic
+					has_trait =	leader_trait_general_enigmatic
+					has_trait =	leader_trait_governor_enigmatic
+					has_trait =	leader_trait_scientist_enigmatic
+					has_trait =	leader_trait_ruler_enigmatic
 				}
-				add_trait = leader_trait_enigmatic
+			}
+			if = {
+				limit = { leader_class = admiral }
+				add_trait = leader_trait_admiral_enigmatic
+				add_ruler_trait = leader_trait_ruler_enigmatic
+			}
+			if = {
+				limit = { leader_class = general }
+				add_trait = leader_trait_general_enigmatic
+				add_ruler_trait = leader_trait_ruler_enigmatic
+			}
+			if = {
+				limit = { leader_class = governor }
+				add_trait = leader_trait_governor_enigmatic
+				add_ruler_trait = leader_trait_ruler_enigmatic
+			}
+			if = {
+				limit = { leader_class = scientist }
+				add_trait = leader_trait_scientist_enigmatic
+				add_ruler_trait = leader_trait_ruler_enigmatic
+			}
+			if = {
+				limit = { leader_class = ruler }
+				add_trait = leader_trait_ruler_enigmatic
+				add_ruler_trait = leader_trait_ruler_enigmatic
 			}
 		}
 	}
