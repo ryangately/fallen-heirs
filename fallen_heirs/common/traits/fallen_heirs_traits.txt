@@ -15,8 +15,8 @@ leader_trait_admiral_enigmatic = {
 	modification = no
 	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_curator.dds"
 	modifier = {
-		ship_weapon_damage = 0.05
-		ship_evasion_mult = 0.05
+		#ship_weapon_damage = 0.05
+		#ship_evasion_mult = 0.05
 	}
 	self_modifier = {
 		species_leader_exp_gain = 0.5
@@ -32,8 +32,8 @@ leader_trait_general_enigmatic = {
 	modification = no
 	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_curator.dds"
 	modifier = {
-		army_morale = 0.05
-		army_morale_damage_mult = 0.05
+		#army_morale = 0.05
+		#army_morale_damage_mult = 0.05
 	}
 	self_modifier = {
 		species_leader_exp_gain = 0.5
@@ -49,8 +49,8 @@ leader_trait_governor_enigmatic = {
 	modification = no
 	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_curator.dds"
 	modifier = {	
-		tile_resource_unity_mult = 0.05
-		tile_resource_energy_mult = 0.05
+		#tile_resource_unity_mult = 0.05
+		#tile_resource_energy_mult = 0.05
 	}
 	self_modifier = {
 		species_leader_exp_gain = 0.5
@@ -82,7 +82,7 @@ leader_trait_scientist_enigmatic = {
 	modification = no
 	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_curator.dds"
 	modifier = {
-		all_technology_research_speed = 0.05
+		#all_technology_research_speed = 0.05
 	}
 	self_modifier = {
 		species_leader_exp_gain = 0.5

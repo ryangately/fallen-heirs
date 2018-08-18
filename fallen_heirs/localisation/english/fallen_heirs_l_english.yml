@@ -31,6 +31,13 @@
  fallenheir.1.b:0 "Follow the materialist path."
  fallenheir.1.c:0 "Follow the other path. FIX ME."
 
+ fallenheir.2.name:0 "A New Enigma"
+ fallenheir.2.1.desc:0 "An empire has converted to a fallen empire."
+ fallenheir.2.1.desc:0 "Why is this appearing? FIX ME."
+ fallenheir.2.a:0 "Enigmatic."
+ fallenheir.2.b:0 "So it is possible..."
+ fallenheir.2.c:0 "There is another..."
+
  leader_trait_enigmatic:0 "Enigmatic"
  leader_trait_enigmatic_desc:0 "This leader has adopted the habits and beliefs of a bygone age."
  leader_trait_ruler_enigmatic:0 "Enigmatic"

@@ -70,7 +70,8 @@ ap_heir_ascendant = {
 	on_enabled = {
 		custom_tooltip = "ap_heir_ascendant_tooltip"
 		hidden_effect = {
-			#country_event = { id = utopia.2650 }
+			country_event = { id = fallenheir.10 }
+			set_graphical_culture = "fallen_empire_03"
 		}
 		if = {
 			limit = { 

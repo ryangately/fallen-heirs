@@ -556,3 +556,49 @@ country_event = {
 		}
 	}
 }
+
+# Turn into Fallen Empire
+country_event = {
+	id = fallenheir.10
+	title = "fallenheir.10.name"
+	desc = "fallenheir.10.desc"
+	picture = GFX_evt_robot_assembly_plant
+	show_sound = event_laboratory_sound
+	trackable = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "fallenheir.10.a"
+		hidden_effect = { save_event_target_as = synth_evo_owner }
+		capital_scope = {
+			enable_special_project = {
+				name = "FALLEN_HEIR_PROJECT"
+				location = this
+				owner = root
+			}
+		}
+	}
+}
+
+# Completed turn into Fallen Empire
+country_event = {
+	id = fallenheir.11
+	title = "fallenheir.11.name"
+	desc = "fallenheir.11.desc"
+	picture = GFX_evt_robot_assembly_plant
+	show_sound = event_synthetic_evolution
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		set_country_flag = fallen_heir_empire	
+		set_graphical_culture = "fallen_empire_03"
+		set_city_graphical_culture = "humanoid_01"
+	}
+	
+	option = {
+		name = "fallenheir.11.a"
+		custom_tooltip = SYNTH_ASSIMILATION_CITIZENSHIP_ENABLED
+	}
+}
