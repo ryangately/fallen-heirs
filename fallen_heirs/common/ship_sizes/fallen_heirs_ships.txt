@@ -25,7 +25,7 @@
 
 
 # Fallen Empire Small Ship
-small_ship_fallen_empire = {
+fallen_heir_escort = {
 	formation_priority = @destroyer_formation_priority
 	graphical_culture = { "fallen_empire_01" "fallen_empire_02" "fallen_empire_03" "fallen_empire_04"  "fallen_machine_empire_01" }
 	max_speed = @speed_fast
@@ -37,8 +37,8 @@ small_ship_fallen_empire = {
 		ship_hull_regen_add_perc = 0.5
 		ship_armor_regen_add_perc = 0.5
 	}
-	max_hitpoints = 1500
-	size_multiplier = 2
+	max_hitpoints = 1100
+	size_multiplier = 3
 	fleet_slot_size = 2
 	section_slots = { "mid" = { locator = "part1" } }
 	num_target_locators = 0
@@ -52,15 +52,14 @@ small_ship_fallen_empire = {
 	
 	has_mineral_upkeep = yes
 	class = shipclass_military
-    construction_type = starbase_shipyard
+	construction_type = starbase_shipyard
 	is_designable = yes
-	enable_default_design = yes
 
-	prerequisites = { "tech_corvettes" }
-	
+	prerequisites = { "tech_escorts" }
+
 	required_component_set = "power_core"
-	required_component_set = "ftl_components"
-	required_component_set = "thruster_components"
-	required_component_set = "sensor_components"
-	required_component_set = "combat_computers"
+ 	required_component_set = "ftl_components"
+ 	required_component_set = "thruster_components"
+ 	required_component_set = "sensor_components"
+ 	required_component_set = "combat_computers"
 }

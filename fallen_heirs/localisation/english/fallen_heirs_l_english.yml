@@ -50,3 +50,29 @@
  leader_trait_admiral_enigmatic_desc:0 "This leader has adopted the habits and beliefs of a bygone age."
  leader_trait_general_enigmatic:0 "Enigmatic"
  leader_trait_general_enigmatic_desc:0 "This leader has adopted the habits and beliefs of a bygone age."
+
+ # Technology
+ TECH_UNLOCK_ESCORT_CONSTRUCTION_TITLE:0 "§HUnlocks Ship Type:§! Escort"
+ TECH_UNLOCK_ESCORT_CONSTRUCTION_DESC:0 "§HEscort§!\nAs a larger two-section design, the ESCORT offers a broad array of strategic armament options."
+
+ # Ships
+ fallen_heir_escort:0 "Escort"
+ fallen_heir_escort_plural:0 "Escorts"
+
+ # ESCORT
+ ESCORT_SHIP_THRUSTER_1:0 "$SHIP_THRUSTER_1$"
+ ESCORT_SHIP_THRUSTER_1_DESC:0 "$SHIP_THRUSTER_1_DESC$"
+ ESCORT_SHIP_THRUSTER_2:0 "$SHIP_THRUSTER_2$"
+ ESCORT_SHIP_THRUSTER_2_DESC:0 "$SHIP_THRUSTER_2_DESC$"
+ ESCORT_SHIP_THRUSTER_3:0 "$SHIP_THRUSTER_3$"
+ ESCORT_SHIP_THRUSTER_3_DESC:0 "$SHIP_THRUSTER_3_DESC$"
+ ESCORT_SHIP_THRUSTER_4:0 "$SHIP_THRUSTER_4$"
+ ESCORT_SHIP_THRUSTER_4_DESC:0 "$SHIP_THRUSTER_4_DESC$"
+ ESCORT_SHIP_THRUSTER_5:0 "$SHIP_THRUSTER_5$"
+ ESCORT_SHIP_THRUSTER_5_DESC:0 "$SHIP_THRUSTER_5_DESC$"
+ ESCORT_FISSION_REACTOR:1 "$FISSION_REACTOR$"
+ ESCORT_FUSION_REACTOR:1 "$FUSION_REACTOR$"
+ ESCORT_COLD_FUSION_REACTOR:1 "$COLD_FUSION_REACTOR$"
+ ESCORT_ANTIMATTER_REACTOR:1 "$ANTIMATTER_REACTOR$"
+ ESCORT_ZERO_POINT_REACTOR:1 "$ZERO_POINT_REACTOR$"
+ ESCORT_DARK_MATTER_REACTOR:1 "$DARK_MATTER_REACTOR$"

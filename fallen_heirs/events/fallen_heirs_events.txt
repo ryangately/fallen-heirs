@@ -594,7 +594,7 @@ country_event = {
 	immediate = {
 		set_country_flag = fallen_heir_empire	
 		set_graphical_culture = "fallen_empire_03"
-		set_city_graphical_culture = "humanoid_01"
+		set_city_graphical_culture = "fallen_empire_03"
 	}
 	
 	option = {

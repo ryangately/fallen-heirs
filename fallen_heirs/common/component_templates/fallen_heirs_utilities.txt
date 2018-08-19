@@ -1,0 +1,127 @@
+#############
+#	POWER	#
+#############
+
+@destroyer_power_1 = 140
+@destroyer_power_2 = 180
+@destroyer_power_3 = 240
+@destroyer_power_4 = 320
+@destroyer_power_5 = 430
+@destroyer_power_6 = 550
+
+@battleship_power_1 = 550
+@battleship_power_2 = 720
+@battleship_power_3 = 950
+@battleship_power_4 = 1250
+@battleship_power_5 = 1550
+@battleship_power_6 = 2000
+
+@titan_power_1 = 1100
+@titan_power_2 = 1450
+@titan_power_3 = 1900
+@titan_power_4 = 2500
+@titan_power_5 = 3200
+@titan_power_6 = 4200
+
+@colossus_power = 10000
+
+@starbase_power = 10000
+
+@platform_power_1 = 200
+@platform_power_2 = 260
+@platform_power_3 = 340
+@platform_power_4 = 440
+@platform_power_5 = 575
+@platform_power_6 = 750
+
+#############
+#	COST	#
+#############
+
+@destroyer_cost_1 = 40
+@destroyer_cost_2 = 50
+@destroyer_cost_3 = 60
+@destroyer_cost_4 = 70
+@destroyer_cost_5 = 80
+@destroyer_cost_6 = 90
+
+@battleship_cost_1 = 200
+@battleship_cost_2 = 260
+@battleship_cost_3 = 320
+@battleship_cost_4 = 380
+@battleship_cost_5 = 440
+@battleship_cost_6 = 500
+
+@titan_cost_1 = 400
+@titan_cost_2 = 450
+@titan_cost_3 = 500
+@titan_cost_4 = 550
+@titan_cost_5 = 1054
+@titan_cost_6 = 1370
+
+@colossus_cost_1 = 0
+
+@platform_cost_1 = 40
+@platform_cost_2 = 50
+@platform_cost_3 = 60
+@platform_cost_4 = 70
+@platform_cost_5 = 80
+@platform_cost_6 = 90
+
+utility_component_template = {
+	key = "ESCORT_FISSION_REACTOR"
+	size = small
+	icon = "GFX_ship_part_reactor_1"
+	icon_frame = 1
+	power = @destroyer_power_1
+	cost = @destroyer_cost_1
+	
+	prerequisites = { "tech_fission_power" }
+	component_set = "power_core"
+	size_restriction = { fallen_heir_escort }
+	upgrades_to = "DESTROYER_FUSION_REACTOR"
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
+utility_component_template = {
+	key = "ESCORT_SHIP_THRUSTER_1"
+	size = small
+	icon = "GFX_ship_part_thruster_1"
+	icon_frame = 1
+	power = @destroyer_power_1
+	cost = @destroyer_cost_1
+	
+	modifier = {
+	}
+		
+	prerequisites = { "tech_thrusters_1" }
+	component_set = "thruster_components"
+	size_restriction = { fallen_heir_escort }
+	upgrades_to = "DESTROYER_SHIP_THRUSTER_2"
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
+utility_component_template = {
+	key = "ESCORT_COMBAT_COMPUTER_PICKET_DEFAULT"
+	size = small
+	icon = "GFX_ship_part_computer_default"
+	icon_frame = 1
+	power = 0
+	cost = 0
+	ship_behavior = "picket"
+
+	class_restriction = { shipclass_military }
+	size_restriction = { fallen_heir_escort }
+	component_set = "combat_computers"
+	upgrades_to = "COMBAT_COMPUTER_PICKET_BASIC"
+	
+	ai_weight = {
+		weight = 1
+	}
+}
